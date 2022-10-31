@@ -1,5 +1,5 @@
 # Vintage-and-Rolling_rate-Analysis
-**In this repository, I will explaine how to conduct vintage, Rolling_rate and Observe_Window analysis with sql
+**In this repository, I will explain how to conduct vintage, Rolling_rate and Observe_Window analysis with sql
 Vintage analysis is a widely used method for managing credit risk. It illustrate the behaviour after an account was opened. Based on same origination period, it calculates charge off ratio of a loan portfolio. In recent years, as the python population, most of research and people prefer to use python to do data analysis. And we can find a lot of articles and videos on the forum regarding how to use python to realize vintage analysis. So, in this post, I want to explain how to use sql to realize vintage analysis step by step. The data I use is “credit card approval prediction”, it is a free data for learner to practice their data analysis skill. So if you are interesting going through the whole process of vintage analysis, you can go to download the data. 
 **There are two tables in the data sources, which is application_record.csv and credit_record.csv, for vintage analysis, we just need to use the credit_record.csv file. The credit_record.csv file contains loan accounts’ credit records, the detailed data explanation is here:
 |Feature name	|Explanation	|Remarks|

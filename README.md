@@ -101,7 +101,7 @@ on t2.ID = t4.ID) t5
 group by t5.previous_status, t5.New_status
 order by t5.previous_status
 ```
-Finally, we put two time period data together and using powet pivot or power BI to visualization data. We can get the following two tables, the first table is displaying as count number, the second table is displaying as percent number. From the second table, we can figure out if the previous status is past due 0-30 days, in the next 12 months, there is 40.40% borrowers still keeping past due 0-30 days, and there are 43.35% borrowers will pay off their debt on time, and only less than 10% borrowers’ status will escalate. For those who old status is past due 60 days, 31.28% will roll back, and 2.64% will continue escalating.
+Finally, we put two time period data together and using power BI to visualization data. We can get a Rolling_rate table which displaying final result as percent number. From Rolling_rate table, we can figure out if the previous status is past due 0-30 days, in the next 12 months, there is 40.40% borrowers still keeping past due 0-30 days, and there are 43.35% borrowers will pay off their debt on time, and only less than 10% borrowers’ status will escalate. For those who old status is past due 60 days, 31.28% will roll back, and 2.64% will continue escalating.
 ![image](https://user-images.githubusercontent.com/50256538/198988561-9bcc0b81-acd8-4df6-9d00-5593a6e57807.png)
 
 

@@ -1,7 +1,12 @@
 # Vintage-and-Rolling_rate-Analysis
 **In this repository, I will explain how to conduct vintage, Rolling_rate and Observe_Window analysis with sql
-Vintage analysis is a widely used method for managing credit risk. It illustrate the behaviour after an account was opened. Based on same origination period, it calculates charge off ratio of a loan portfolio. In recent years, as the python population, most of research and people prefer to use python to do data analysis. And we can find a lot of articles and videos on the forum regarding how to use python to realize vintage analysis. So, in this post, I want to explain how to use sql to realize vintage analysis step by step. The data I use is “credit card approval prediction”, it is a free data for learner to practice their data analysis skill. So if you are interesting going through the whole process of vintage analysis, you can go to download the data. 
-**There are two tables in the data sources, which is application_record.csv and credit_record.csv, for vintage analysis, we just need to use the credit_record.csv file. The credit_record.csv file contains loan accounts’ credit records, the detailed data explanation is here:
+
+
+**Vintage Analysis**
+
+
+***Vintage analysis is a widely used method for managing credit risk. It illustrate the behaviour after an account was opened. Based on same origination period, it calculates charge off ratio of a loan portfolio. In recent years, as the python population, most of research and people prefer to use python to do data analysis. And we can find a lot of articles and videos on the forum regarding how to use python to realize vintage analysis. So, in this post, I want to explain how to use sql to realize vintage analysis step by step. The data I use is “credit card approval prediction”, it is a free data for learner to practice their data analysis skill. So if you are interesting going through the whole process of vintage analysis, you can go to download the data. 
+There are two tables in the data sources, which is application_record.csv and credit_record.csv, for vintage analysis, we just need to use the credit_record.csv file. The credit_record.csv file contains loan accounts’ credit records, the detailed data explanation is here:
 |Feature name	|Explanation	|Remarks|
 |---|---|---|
 |ID	|Client number|	
@@ -65,15 +70,18 @@ According to the above screenshot, we can see the credit management in the first
 ![image](https://user-images.githubusercontent.com/50256538/198987494-b5a01870-75b2-4c95-bcfa-6820dea9128f.png)
 
  
-*****Observe Window Analysis
-Because of two reasons, account cancellation and observe over, our observe on accounts will be truncated. Observe window is a significant parameter to be considered. If observe window is too short, users’ behaviour will not fully show off, which will bring unnecessary noise to our data. In order to observe how many accounts increase as observe window extend, we plot this.
+**Observe Window Analysis**
+
+
+***Because of two reasons, account cancellation and observe over, our observe on accounts will be truncated. Observe window is a significant parameter to be considered. If observe window is too short, users’ behaviour will not fully show off, which will bring unnecessary noise to our data. In order to observe how many accounts increase as observe window extend, we plot this.
 ![image](https://user-images.githubusercontent.com/50256538/198987550-a5f9d667-6939-47d9-9c0c-4632528df96e.png)
 
  
 From the above screenshot, if we setting the past-due conditions is not so strict, as the time pass, the past-due number will increase dramatically. If we just regard the situation which past-due more than 60 days as default, we can see the default number are much more stable.
 
-*****Rolling Rate Analysis
-**Roll rate analysis is used for solving various type of problems. Most common usage is loss forecasting and it is also used to determine the definition of 'bad' customers (defaulters). Most common definition of 'bad' customer is customer delinquent for 90 days or more. In simple words, if payment has been due 90 days or more, it is considered as 'bad'. It includes if it is partially or fully charged-off.
+***Rolling Rate Analysis**
+
+****Roll rate analysis is used for solving various type of problems. Most common usage is loss forecasting and it is also used to determine the definition of 'bad' customers (defaulters). Most common definition of 'bad' customer is customer delinquent for 90 days or more. In simple words, if payment has been due 90 days or more, it is considered as 'bad'. It includes if it is partially or fully charged-off.
 
 **A roll rate is the percentage of a lender’s portfolio that transitions from one 30-day delinquent period to another. Roll rate methodologies are sometimes called transition rates, flow models, or migration analysis. A roll rate is used by analysts to predict losses based on linquency. For carrying out the Rolling_rate analysis, we still use the credit card approve data. According to the data dictionary explanation, the “-60” in the MONTHS_BALANCE column means 60 months ago, so I will use the convert() function to transform the MONTHS_BALANCE to the exactly date. When I did this analysis, the date is on 10th August 2022. In dateadd() function, I set ‘20220810’ as the current date. So we can know the first date which the lending institution grant loan is 20170810. As the inflation hit our economy in the past twelve months, for controlling the inflation, most of the central bank will hike the rate. That will unavoidably lead to increase mortgage rate. So using the Rolling_rate analysis, we can figure out how many borrowers will enter into past due 90 days. After that, we can set the observe point at 20210910, the time period between 20200910 and 20210910 is the observe period, and the time period between 20210910 and 20220810 is the behaviour period
 ```

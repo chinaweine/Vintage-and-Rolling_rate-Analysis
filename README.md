@@ -62,7 +62,7 @@ From the following screenshot, we can see the final result. However you should p
 
 
  
-Finally, I prefer to use power BI to visualize the query result.
+Finally, we can use the power BI to visualize the query result.
 ![image](https://user-images.githubusercontent.com/50256538/198987429-eb83b0a0-6cb2-4ee8-ad21-49bc2375b50a.png)
 
  
@@ -107,14 +107,14 @@ Finally, we put two time period data together and using powet pivot or power BI 
 
 When we use the Flow_Rate Analysis method, we can learn more information in detail each month. Using the following SQL code, we can get a data list that shows us the number of each status in each month. Then we use power pivot to transform the data into the following table.
 
-'''
+```
 select t1.STATUS, t1.date, count(t1.ID) AS count_num
 from (select *, convert(varchar(8), dateadd(mm, MONTHS_BALANCE, '20220810'),112) as date
 from credit_record) t1
 where T1.STATUS <> 'X' and T1.date between 20210910 and 20220810
 group by t1.STATUS, t1.date
 order by t1.STATUS, t1.date
-'''
+```
 ![image](https://user-images.githubusercontent.com/50256538/198988973-69e77ddd-b3e7-4b38-a206-c1288e899be4.png)
 
 
